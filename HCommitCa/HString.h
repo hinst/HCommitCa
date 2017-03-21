@@ -1,6 +1,10 @@
+#pragma once
+
+#include "include.h"
+
 namespace hca { namespace HString {
 	
-	const string DumbFileNameChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.";
+	const string DumbFileNameChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ./";
 	
 	string stringReplace(const string& text, const string& subText, const string& newText) {
 		auto result = text;
@@ -16,7 +20,7 @@ namespace hca { namespace HString {
 	}
 	
 	bool checkDumbFileName(const string& text) {
-		bool result = text.length() > 0 && text != "..";
+		bool result = text.length() > 0 && false == checkStringContains(text, "..");
 		if (result) {
 			for (size_t i = 0; i < text.length(); i++) {
 				auto character = text[i];
@@ -36,9 +40,13 @@ namespace hca { namespace HString {
 
 	shared_ptr<string> loadFileToString(const string& filePath) {
 		shared_ptr<string> result;
-		std::ifstream t(filePath);
+		bfs::ifstream t(filePath);
 		result = make_shared<string>(istreambuf_iterator<char>(t), istreambuf_iterator<char>());
 		return result;
+	}
+
+	bool checkStringContains(const string& text, const string& desire) {
+		return text.find(desire) != string::npos;
 	}
 	
 }}
