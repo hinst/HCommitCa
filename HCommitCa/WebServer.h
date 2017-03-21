@@ -42,7 +42,12 @@ private:
 
 	bool handleFileRequest(WebServerContext context) {
 		auto fileName = stringReplace(context.subURL, "/", "");
-		std::cout << context.subURL << endl;
+		if (checkDumbFileName(fileName)) {
+			cout << context.subURL << endl;
+			auto result = loadFile(fileName);
+		} else {
+			context.response->body = "Invalid file path specified: '" + fileName + "'";
+		}
 	}
 
 	shared_ptr<string> loadFile(string fileName) {
