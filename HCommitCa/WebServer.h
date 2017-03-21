@@ -39,7 +39,7 @@ private:
 	}
 
 	bool handleFileRequest(WebServerContext context) {
-		auto fileName = stringReplace(context.subURL, "/", "");
+		auto fileName = context.subURL;
 		if (checkDumbFileName(fileName)) {
 			cout << context.subURL << endl;
 			auto result = loadFile(fileName);
