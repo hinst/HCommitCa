@@ -8,3 +8,7 @@ HCommitCa.exe
 ref_test/Debug/
 ref_test/ref_test.txt
 HCommitCa/Makefile
+HCommitCa/HCommitCa.depend
+HCommitCa/HCommitCa.layout
+HCommitCa/HCommitCa.txt
+HCommitCa/obj
