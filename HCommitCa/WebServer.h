@@ -44,31 +44,10 @@ private:
 		if (checkDumbFileName(fileName)) {
 			auto filePath = filesPath + fileName;
 			cout << filePath << endl;
-			auto result = loadFile(filePath);
+			auto content = loadFileToString(filePath);
 		} else {
 			cout << "Invalid file path specified: '" + fileName + "'\n";
 			result = false;
-		}
-		return result;
-	}
-
-	shared_ptr<string> loadFile(string fileName) {
-		shared_ptr<string> result;
-		auto files = getFiles();
-		if (checkStringVectorContains(files, fileName)) {
-
-		}
-		return result;
-	}
-
-	vector<string> getFiles() {
-		auto result = vector<string>();
-		for (bfs::directory_iterator i(filesPath); i != bfs::directory_iterator(); ++i) {
-			auto currentPath = i->path();
-			if (false == is_directory(currentPath)) {
-				auto fileName = currentPath.filename();
-				result.push_back(fileName.string());
-			}
 		}
 		return result;
 	}
