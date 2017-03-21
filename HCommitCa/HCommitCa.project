@@ -35,6 +35,7 @@
         <Library Value="libboost_system-mgw51-sd-1_63.a"/>
         <Library Value="ws2_32"/>
         <Library Value="wsock32"/>
+        <Library Value="libboost_filesystem-mgw51-sd-1_63.a"/>
       </Linker>
       <ResourceCompiler Options="" Required="no"/>
       <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>

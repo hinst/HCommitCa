@@ -10,9 +10,10 @@ class App {
 
 public: 
 	string dir = "";
-    shared_ptr<WebServer> server;
+	shared_ptr<WebServer> server;
 
 	void run() {
+		cout << "App.run: dir='" + dir + "'\n";
 		server = make_shared<WebServer>();
 		server->filesPath = this->getWebDir();
 		server->start();
@@ -21,7 +22,7 @@ public:
 	}
 
 	string getWebDir() {
-		return dir + "\\webFiles";
+		return dir + "\\h-commit-ca\\build\\static";
 	}
 
 };

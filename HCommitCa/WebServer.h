@@ -39,21 +39,26 @@ private:
 	}
 
 	bool handleFileRequest(WebServerContext context) {
+		auto result = false;
 		auto fileName = context.subURL;
 		if (checkDumbFileName(fileName)) {
-			cout << context.subURL << endl;
-			auto result = loadFile(fileName);
+			auto filePath = filesPath + fileName;
+			cout << filePath << endl;
+			auto result = loadFile(filePath);
 		} else {
-			context.response->body = "Invalid file path specified: '" + fileName + "'";
+			cout << "Invalid file path specified: '" + fileName + "'\n";
+			result = false;
 		}
+		return result;
 	}
 
 	shared_ptr<string> loadFile(string fileName) {
-		auto result = make_shared<string>();
+		shared_ptr<string> result;
 		auto files = getFiles();
 		if (checkStringVectorContains(files, fileName)) {
 
 		}
+		return result;
 	}
 
 	vector<string> getFiles() {

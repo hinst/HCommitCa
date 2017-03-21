@@ -41,8 +41,8 @@ LinkOptions            :=
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). $(IncludeSwitch)C:\Dev\boost_1_63_0 $(IncludeSwitch)C:\Dev\Beast-1.0\include $(IncludeSwitch)C:\Dev\Beast-1.0\examples $(IncludeSwitch)C:\Dev\Beast-1.0\extras 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := $(LibrarySwitch)boost_system-mgw51-sd-1_63 $(LibrarySwitch)ws2_32 $(LibrarySwitch)wsock32 
-ArLibs                 :=  "libboost_system-mgw51-sd-1_63.a" "ws2_32" "wsock32" 
+Libs                   := $(LibrarySwitch)boost_system-mgw51-sd-1_63 $(LibrarySwitch)ws2_32 $(LibrarySwitch)wsock32 $(LibrarySwitch)boost_filesystem-mgw51-sd-1_63 
+ArLibs                 :=  "libboost_system-mgw51-sd-1_63.a" "ws2_32" "wsock32" "libboost_filesystem-mgw51-sd-1_63.a" 
 LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch)C:\Dev\boost_1_63_0\stage\lib 
 
 ##

@@ -19,6 +19,10 @@ namespace hca { namespace HString {
 		return result;
 	}
 	
+	bool checkStringContains(const string& text, const string& desire) {
+		return text.find(desire) != string::npos;
+	}
+	
 	bool checkDumbFileName(const string& text) {
 		bool result = text.length() > 0 && false == checkStringContains(text, "..");
 		if (result) {
@@ -45,8 +49,4 @@ namespace hca { namespace HString {
 		return result;
 	}
 
-	bool checkStringContains(const string& text, const string& desire) {
-		return text.find(desire) != string::npos;
-	}
-	
 }}
