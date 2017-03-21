@@ -4,8 +4,6 @@
 
 namespace hca { namespace Web {
 
-using namespace boost::filesystem;
-
 class WebServer {
 
 public:
@@ -52,13 +50,20 @@ private:
 
 	shared_ptr<string> loadFile(string fileName) {
 		auto result = make_shared<string>();
+		auto files = getFiles();
+		if (checkStringVectorContains(files, fileName)) {
+
+		}
 	}
 
-	shared_ptr<vector<string>> getFiles() {
-		auto result = make_shared<vector<string>>();
-		for (directory_iterator i(filesPath); i != directory_iterator(); ++i) {
-			auto fileName = i->path().filename();
-			result->push_back(fileName.string());
+	vector<string> getFiles() {
+		auto result = vector<string>();
+		for (bfs::directory_iterator i(filesPath); i != bfs::directory_iterator(); ++i) {
+			auto currentPath = i->path();
+			if (false == is_directory(currentPath)) {
+				auto fileName = currentPath.filename();
+				result.push_back(fileName.string());
+			}
 		}
 		return result;
 	}

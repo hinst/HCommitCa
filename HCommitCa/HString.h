@@ -29,5 +29,16 @@ namespace hca { namespace HString {
 		}
 		return result;
 	}
+
+	bool checkStringVectorContains(const vector<string>& a, const string& item) {
+		return find(a.begin(), a.end(), item) != a.end();
+	}
+
+	shared_ptr<string> loadFileToString(const string& filePath) {
+		shared_ptr<string> result;
+		std::ifstream t(filePath);
+		result = make_shared<string>(istreambuf_iterator<char>(t), istreambuf_iterator<char>());
+		return result;
+	}
 	
 }}
