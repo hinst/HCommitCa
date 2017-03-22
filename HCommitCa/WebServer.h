@@ -44,11 +44,14 @@ private:
 		if (checkDumbFileName(fileName)) {
 			auto filePath = filesPath + fileName;
 			cout << filePath << endl;
+			GlobalLog->Write("attempting to load file: '" + filePath + "'");
 			auto content = loadFileToString(filePath);
 			if (content != nullptr) {
-				GlobalLog->Write("Loaded file: '" + filePath + "'");
+				auto mimeType = getMimeType(filePath);
+				GlobalLog->Write("Loaded file: '" + filePath + "' t=" + mimeType);
 				context.response->body = *content;
-				context.response->fields.insert("Content-Type", beast::http::mime_type(filePath));
+				if (mimeType.length() > 0)
+					context.response->fields.insert("Content-Type", mimeType);
 			}
 		} else {
 			result = false;

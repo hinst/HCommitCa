@@ -4,8 +4,14 @@
 
 namespace hca { namespace HString {
 	
-	const string DumbFileNameChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ./";
-	
+	const string DumbFileNameChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ./0123456789";
+
+	map<string, string> MimeTypes = {
+		{".html", "text/html"},
+		{".js", "text/javascript"},
+		{".css", "text/css"}
+	};
+
 	string stringReplace(const string& text, const string& subText, const string& newText) {
 		auto result = text;
 		if (result.length() > 0) {
@@ -21,6 +27,24 @@ namespace hca { namespace HString {
 	
 	bool checkStringContains(const string& text, const string& desire) {
 		return text.find(desire) != string::npos;
+	}
+
+	bool checkStringEndsWith(const string& text, const string& desire) {
+		return text.find(desire) == text.length() - desire.length();
+	}
+
+	string getMimeType(const string& filePath) {
+		string result;
+		for (auto i = MimeTypes.begin(); i != MimeTypes.end(); ++i) {
+			auto ext = i->first;
+			GlobalLog->Write(filePath + " ; " + ext);
+			if (checkStringEndsWith(filePath, ext)) {
+				GlobalLog->Write("f");
+				result = i->second;
+				break;
+			}
+		}
+		return result;
 	}
 	
 	bool checkDumbFileName(const string& text) {

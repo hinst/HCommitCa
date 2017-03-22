@@ -1,5 +1,7 @@
 #pragma once
 
+#include "include.h"
+
 namespace hca { namespace Web {
 
 using namespace std;
