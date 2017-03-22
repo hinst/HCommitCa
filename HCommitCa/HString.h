@@ -9,7 +9,8 @@ namespace hca { namespace HString {
 	map<string, string> MimeTypes = {
 		{".html", "text/html"},
 		{".js", "text/javascript"},
-		{".css", "text/css"}
+		{".css", "text/css"},
+		{".svg", "image/svg+xml"}
 	};
 
 	string stringReplace(const string& text, const string& subText, const string& newText) {
