@@ -37,9 +37,7 @@ namespace hca { namespace HString {
 		string result;
 		for (auto i = MimeTypes.begin(); i != MimeTypes.end(); ++i) {
 			auto ext = i->first;
-			GlobalLog->Write(filePath + " ; " + ext);
 			if (checkStringEndsWith(filePath, ext)) {
-				GlobalLog->Write("f");
 				result = i->second;
 				break;
 			}

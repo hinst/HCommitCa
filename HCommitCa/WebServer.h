@@ -43,8 +43,6 @@ private:
 		auto fileName = context.subURL;
 		if (checkDumbFileName(fileName)) {
 			auto filePath = filesPath + fileName;
-			cout << filePath << endl;
-			GlobalLog->Write("attempting to load file: '" + filePath + "'");
 			auto content = loadFileToString(filePath);
 			if (content != nullptr) {
 				auto mimeType = getMimeType(filePath);
