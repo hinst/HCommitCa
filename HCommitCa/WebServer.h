@@ -47,7 +47,8 @@ private:
 			auto content = loadFileToString(filePath);
 			cout << (filePath + " " + boolToStr(content != nullptr) + "\n");
 			if (content != nullptr) {
-				context.request->body = content;
+				cout << "'" << *content << "'" << endl;
+				context.response->body = *content;
 			}
 		} else {
 			cout << "Invalid file path specified: '" + fileName + "'\n";

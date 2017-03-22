@@ -22,7 +22,7 @@ public:
 	}
 
 	string getWebDir() {
-		return dir + "\\h-commit-ca\\build\\static";
+		return dir + "\\h-commit-ca\\build";
 	}
 
 };

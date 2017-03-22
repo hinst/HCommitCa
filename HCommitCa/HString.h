@@ -44,8 +44,9 @@ namespace hca { namespace HString {
 
 	shared_ptr<string> loadFileToString(const string& filePath) {
 		shared_ptr<string> result;
-		bfs::ifstream t(filePath);
-		result = make_shared<string>(istreambuf_iterator<char>(t), istreambuf_iterator<char>());
+		ifstream file(filePath);
+		if (false == file.fail())
+			result = make_shared<string>(istreambuf_iterator<char>(file), istreambuf_iterator<char>());
 		return result;
 	}
 
