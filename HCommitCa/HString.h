@@ -49,4 +49,11 @@ namespace hca { namespace HString {
 		return result;
 	}
 
+	string boolToStr(const bool x) {
+		if (x)
+			return string("true");
+		else
+			return string("false");
+	}
+
 }}

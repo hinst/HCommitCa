@@ -45,6 +45,10 @@ private:
 			auto filePath = filesPath + fileName;
 			cout << filePath << endl;
 			auto content = loadFileToString(filePath);
+			cout << (filePath + " " + boolToStr(content != nullptr) + "\n");
+			if (content != nullptr) {
+				context.request->body = content;
+			}
 		} else {
 			cout << "Invalid file path specified: '" + fileName + "'\n";
 			result = false;
