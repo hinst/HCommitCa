@@ -45,13 +45,12 @@ private:
 			auto filePath = filesPath + fileName;
 			cout << filePath << endl;
 			auto content = loadFileToString(filePath);
-			cout << (filePath + " " + boolToStr(content != nullptr) + "\n");
 			if (content != nullptr) {
-				cout << "'" << *content << "'" << endl;
+				GlobalLog->Write("Loaded file: '" + filePath + "'");
 				context.response->body = *content;
+				context.response->fields.insert("Content-Type", beast::http::mime_type(filePath));
 			}
 		} else {
-			cout << "Invalid file path specified: '" + fileName + "'\n";
 			result = false;
 		}
 		return result;

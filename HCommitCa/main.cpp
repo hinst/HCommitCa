@@ -5,7 +5,7 @@ using namespace hca::App;
 
 int main(int argc, char *argv[])
 {
-	cout << string("[STARTING]");
+	cout << string("[STARTING]\n");
 	App app;
 	app.dir = bfs::system_complete(argv[0]).parent_path().string();
 	app.run();
