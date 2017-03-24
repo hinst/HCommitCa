@@ -9,11 +9,14 @@ using namespace std;
 class App {
 
 public: 
-	string dir = "";
+	string dir;
 	shared_ptr<WebServer> server;
+	string configFilePath;
+	string repoDirPath;
 
 	void run() {
-		cout << "App.run: dir='" + dir + "'\n";
+		GlobalLog->Write("App.run: dir='" + dir + "'");
+		loadConfig();
 		server = make_shared<WebServer>();
 		server->filesPath = this->getWebDir();
 		server->start();
@@ -23,6 +26,15 @@ public:
 
 	string getWebDir() {
 		return dir + "\\h-commit-ca\\build";
+	}
+
+	void loadConfig() {
+		if (configFilePath.length() > 0) {
+			boost::property_tree::ptree propertyTree;
+			boost::property_tree::read_json(configFilePath, propertyTree);
+			repoDirPath = propertyTree.get_child("repo").get_value<string>();
+			GlobalLog->Write("Repo dir: " + repoDirPath);
+		}
 	}
 
 };
