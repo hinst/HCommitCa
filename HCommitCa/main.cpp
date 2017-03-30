@@ -1,7 +1,6 @@
 #include "include.h"
 
 using namespace std;
-using namespace hca::App;
 
 int main(int argc, char *argv[])
 {

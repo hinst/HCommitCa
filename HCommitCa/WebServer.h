@@ -2,7 +2,7 @@
 
 #include "include.h"
 
-namespace hca { namespace Web {
+namespace hca {
 
 class WebServer {
 
@@ -59,4 +59,4 @@ private:
 
 };
 
-}}
+}

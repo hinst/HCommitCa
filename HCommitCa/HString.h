@@ -2,7 +2,7 @@
 
 #include "include.h"
 
-namespace hca { namespace HString {
+namespace hca {
 	
 	const string DumbFileNameChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ./0123456789";
 
@@ -80,4 +80,4 @@ namespace hca { namespace HString {
 			return string("false");
 	}
 
-}}
+}

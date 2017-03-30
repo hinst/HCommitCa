@@ -2,7 +2,7 @@
 
 #include "include.h"
 
-namespace hca { namespace Log {
+namespace hca {
 
 class Log {
 
@@ -20,4 +20,4 @@ public:
 
 auto GlobalLog = make_shared<Log>();
 
-}}
+}

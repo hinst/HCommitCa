@@ -1,6 +1,6 @@
 #include "include.h"
 
-namespace hca { namespace Web {
+namespace hca {
 
 struct WebServerContext {
 	shared_ptr<WebRequest> request;
@@ -8,4 +8,4 @@ struct WebServerContext {
 	string subURL;
 };
 
-}}
+}

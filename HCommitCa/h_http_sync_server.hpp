@@ -29,7 +29,7 @@
 
 class prepare;
 class prepare;
-using namespace hca::Web;
+using namespace hca;
 
 namespace beast {
 namespace http {

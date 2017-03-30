@@ -2,13 +2,13 @@
 
 #include "include.h"
 
-namespace hca { namespace App {
+namespace hca {
 
 using namespace std;
 
 class App {
 
-public: 
+public:
 	string dir;
 	shared_ptr<WebServer> server;
 	string configFilePath;
@@ -39,4 +39,4 @@ public:
 
 };
 
-}}
+}
