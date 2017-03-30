@@ -4,12 +4,12 @@
 #include <string>
 #include <fstream>
 #include <memory>
+#include <cstdio>
 using namespace std;
 
 #include <boost/exception/diagnostic_information.hpp>
 #include <boost/exception_ptr.hpp>
 #include <boost/filesystem.hpp>
-namespace bfs { using namespace boost::filesystem; }
 #include <boost/thread/mutex.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
