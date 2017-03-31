@@ -1,4 +1,6 @@
+#ifdef file_messages_enabled
 #pragma message("hca.main.cpp")
+#endif
 #include "include.h"
 
 using namespace std;

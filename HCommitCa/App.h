@@ -1,5 +1,7 @@
 #pragma once
+#ifdef file_messages_enabled
 #pragma message("hca.App.h")
+#endif
 #include "include.h"
 
 namespace hca {

@@ -1,5 +1,7 @@
 #pragma once
+#ifdef file_messages_enabled
 #pragma message("hca.include.h")
+#endif
 
 #include <Windows.h>
 #include <iostream>
