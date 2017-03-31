@@ -4,7 +4,7 @@ namespace hca {
 
 class Process {
 
-void prepareStructs(STARTUPINFO& startupInfo, PROCESS_INFORMATION& processInfo) {
+tuple<HANDLE, HANDLE> prepareStructs(STARTUPINFO& startupInfo, PROCESS_INFORMATION& processInfo) {
 	ZeroMemory(&processInfo, sizeof(processInfo));
 	ZeroMemory(&startupInfo, sizeof(startupInfo));
 	startupInfo.cb = sizeof(startupInfo);
@@ -22,6 +22,7 @@ void prepareStructs(STARTUPINFO& startupInfo, PROCESS_INFORMATION& processInfo) 
 	startupInfo.hStdOutput = child_output_write;
 	startupInfo.hStdError = child_output_write;
 	startupInfo.dwFlags |= STARTF_USESTDHANDLES;
+	return make_tuple(child_output_read, child_input_write);
 }
 
 void closeProcessInfo(PROCESS_INFORMATION& processInfo) {
@@ -50,15 +51,17 @@ shared_ptr<string> run(string command) {
 	shared_ptr<string> result;
 	STARTUPINFO startupInfo;
 	PROCESS_INFORMATION processInfo; 
-	prepareStructs(startupInfo, processInfo);
+	auto rw = prepareStructs(startupInfo, processInfo);
 
 	auto commandStr = strdup(command.c_str());
 	auto createProcessResult = CreateProcess(nullptr, commandStr, nullptr, nullptr, true, 0, nullptr, nullptr, &startupInfo, &processInfo);
 	free(commandStr);
 	commandStr = nullptr;
 
-	if (createProcessResult) {
-	}
+	if (createProcessResult)
+		result = loadOutput(get<0>(rw));
+
+	closeProcessInfo(processInfo);
 	return result;
 }
 
