@@ -1,20 +1,22 @@
+#pragma once
+#pragma message("hca.Process.h")
 #include "include.h"
 
 namespace hca {
 
 class Process {
 
-tuple<HANDLE, HANDLE> prepareStructs(STARTUPINFO& startupInfo, PROCESS_INFORMATION& processInfo) {
+std::pair<HANDLE, HANDLE> prepareStructs(STARTUPINFO& startupInfo, PROCESS_INFORMATION& processInfo) {
 	ZeroMemory(&processInfo, sizeof(processInfo));
 	ZeroMemory(&startupInfo, sizeof(startupInfo));
 	startupInfo.cb = sizeof(startupInfo);
-	SECURITY_ATTRIBUTES securityAttributes; 
+	SECURITY_ATTRIBUTES securityAttributes;
 	securityAttributes.nLength = sizeof(SECURITY_ATTRIBUTES);
 	securityAttributes.bInheritHandle = true;
 	securityAttributes.lpSecurityDescriptor = nullptr;
 	HANDLE child_input_read;
 	HANDLE child_input_write;
-	CreatePipe(&child_input_read, &child_input_write, &securityAttributes, 0);  
+	CreatePipe(&child_input_read, &child_input_write, &securityAttributes, 0);
 	HANDLE child_output_read;
 	HANDLE child_output_write;
 	CreatePipe(&child_output_read, &child_output_write, &securityAttributes, 0);
@@ -22,7 +24,7 @@ tuple<HANDLE, HANDLE> prepareStructs(STARTUPINFO& startupInfo, PROCESS_INFORMATI
 	startupInfo.hStdOutput = child_output_write;
 	startupInfo.hStdError = child_output_write;
 	startupInfo.dwFlags |= STARTF_USESTDHANDLES;
-	return make_tuple(child_output_read, child_input_write);
+	return make_pair(child_output_read, child_input_write);
 }
 
 void closeProcessInfo(PROCESS_INFORMATION& processInfo) {
@@ -50,7 +52,7 @@ shared_ptr<string> loadOutput(HANDLE handle) {
 shared_ptr<string> run(string command) {
 	shared_ptr<string> result;
 	STARTUPINFO startupInfo;
-	PROCESS_INFORMATION processInfo; 
+	PROCESS_INFORMATION processInfo;
 	auto rw = prepareStructs(startupInfo, processInfo);
 
 	auto commandStr = strdup(command.c_str());

@@ -1,3 +1,5 @@
+#pragma once
+#pragma message("hca.WebServerContext.h")
 #include "include.h"
 
 namespace hca {

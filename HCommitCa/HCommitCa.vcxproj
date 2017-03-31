@@ -71,6 +71,7 @@
     <ClInclude Include="h_http_sync_server.hpp" />
     <ClInclude Include="include.h" />
     <ClInclude Include="Log.h" />
+    <ClInclude Include="Process.h" />
     <ClInclude Include="RepoReader.h" />
     <ClInclude Include="Web.h" />
     <ClInclude Include="WebServer.h" />

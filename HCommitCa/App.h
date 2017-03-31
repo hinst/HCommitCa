@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma message("hca.App.h")
 #include "include.h"
 
 namespace hca {

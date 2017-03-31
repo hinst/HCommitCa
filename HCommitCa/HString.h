@@ -1,9 +1,9 @@
 #pragma once
-
+#pragma message("hca.HString.h")
 #include "include.h"
 
 namespace hca {
-	
+
 	const string DumbFileNameChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ./0123456789";
 
 	map<string, string> MimeTypes = {
@@ -25,7 +25,7 @@ namespace hca {
 		}
 		return result;
 	}
-	
+
 	bool checkStringContains(const string& text, const string& desire) {
 		return text.find(desire) != string::npos;
 	}
@@ -45,7 +45,7 @@ namespace hca {
 		}
 		return result;
 	}
-	
+
 	bool checkDumbFileName(const string& text) {
 		bool result = text.length() > 0 && false == checkStringContains(text, "..");
 		if (result) {

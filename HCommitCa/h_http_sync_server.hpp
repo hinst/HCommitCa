@@ -7,6 +7,7 @@
 
 #ifndef BEAST_EXAMPLE_HTTP_SYNC_SERVER_H_INCLUDED
 #define BEAST_EXAMPLE_HTTP_SYNC_SERVER_H_INCLUDED
+#pragma message("hca.BEAST_EXAMPLE_HTTP_SYNC_SERVER_H")
 
 #include "file_body.hpp"
 #include "mime_type.hpp"

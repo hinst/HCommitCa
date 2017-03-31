@@ -1,3 +1,4 @@
+#pragma message("hca.main.cpp")
 #include "include.h"
 
 using namespace std;

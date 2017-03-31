@@ -1,10 +1,13 @@
 #pragma once
+#pragma message("hca.include.h")
 
+#include <Windows.h>
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <memory>
 #include <cstdio>
+#include <utility>
 using namespace std;
 
 #include <boost/exception/diagnostic_information.hpp>
@@ -19,6 +22,7 @@ using namespace std;
 
 #include "Log.h"
 #include "HString.h"
+#include "HProcess.h"
 #include "WebServerContext.h"
 #include "WebServer.h"
 #include "App.h"
