@@ -80,4 +80,10 @@ namespace hca {
 			return string("false");
 	}
 
+	char* cloneAsPChar(const string &x) {
+		auto result = new char[x.length()];
+		strcpy(result, x.c_str());
+		return result;
+	}
+
 }

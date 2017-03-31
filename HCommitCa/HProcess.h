@@ -55,9 +55,9 @@ shared_ptr<string> run(string command) {
 	PROCESS_INFORMATION processInfo;
 	auto rw = prepareStructs(startupInfo, processInfo);
 
-	auto commandStr = strdup(command.c_str());
+	auto commandStr = cloneAsPChar(command);
 	auto createProcessResult = CreateProcess(nullptr, commandStr, nullptr, nullptr, true, 0, nullptr, nullptr, &startupInfo, &processInfo);
-	free(commandStr);
+	delete[] commandStr;
 	commandStr = nullptr;
 
 	if (createProcessResult)
